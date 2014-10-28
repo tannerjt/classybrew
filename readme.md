@@ -15,7 +15,7 @@ For more information about Jenk's Natural Breaks and a helpful python port of th
 
 ```javascript
 var brew = new classyBrew();
-brew.setSeries([30.01, 14.9, 22.71, 24.96, 7.17, 22.31, 26.23, 24.62, 24.35, 29.37, 28.55, 20.05, 22.06, 19.04, 21.95, 28.13, 21.28, 25.42, 19.16, 28.52, 29.63, 21.37, 16.69, 30.05, 25.81, 21.26, 23.48, 25.07, 31.26, 26.9, 24.04, 16.46, 27.47, 19.3, 20.51, 21.43]);
+brew.setSeries([30.01, 14.9, 22.71, 24.96, 7.17, ...]);
 brew.setNumClasses(5);
 brew.setColorCode("BuGn");
 ```
@@ -33,10 +33,38 @@ brew.classify(); // returns [7.17,14.9,19.3,22.71,26.9,31.26]
 ```javascript
 var breaks = brew.getBreaks(); // returns [7.17,14.9,19.3,22.71,26.9,31.26]
 var colors = brew.getColors(); // returns [rgb(237,248,251),rgb(178,226,226),rgb(102,194,164),rgb(44,162,95),rgb(0,109,44)]
+brew.getColorInRange(7.5); //returns rgb(237,248,251)
 ```
 
-**Basics - Get Color by Number**
+***All classybrew Methods***
 
 ```javascript
-brew.getColorInRange(7.5)
+//constructor
+var brew = new classyBrew();
+
+//_____setters______//
+//__________________//
+
+// classification
+brew.setSeries(Array); // define array of data to classify
+brew.setNumClasses(Number); // number of classes or breaks
+
+// color theory
+brew.setColorCode(ColorCodeString); // color ramp code
+
+//_____getters______//
+//__________________//
+
+// classification
+brew.getSeries(); // returns Array of original data
+brew.getNumClasses(); // returns set number of classes
+brew.
+brew.classify(); // build array of natural breaks
+brew.getBreaks(); // same as classify
+
+//color theory
+brew.getColorCodes(); // returns array of all available color codes
+brew.getColorCode(); // returns set color code
+brew.getColors(); // returns array of colors specific to your data
+brew.getColorInRange(Num); // returns appropriate color for given number
 ```
