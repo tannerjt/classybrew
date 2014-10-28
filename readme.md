@@ -69,7 +69,7 @@ brew.getColors(); // returns array of colors specific to your data
 brew.getColorInRange(Num); // returns appropriate color for given number
 ```
 
-*** Color Theory ***
+***Color Theory***
 
 The colors generated using classybrew are based on [Cynthia Brewer's](http://colorbrewer2.org/) sequential color ramps.  Below are the possible codes you can use when generating your color ramp with your data.  ***BuGn -> Blue to Green***
 
