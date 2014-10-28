@@ -1,10 +1,10 @@
 ##classybrew
 
-**classybrew** uses the Jenks Natural Breaks Algorithm to generate classes based on intrinsic breaks in your data.  **classybrew** will also generate a range of **sequential** color codes based on the number of breaks in your data and a user defined palette.
+**classybrew** uses the Jenks Natural Breaks Algorithm to generate classes based on intrinsic breaks in your data.  **classybrew** will also generate a range of **sequential** color codes based on the number of breaks in your data and a user defined palette.  The minified JavaScript file is only 18kb in size, and will integrate perfectly with your next **mapping** project.
 
 This tool was built with help from two outstanding open source repositories.
 
-+ [axismaps/colorbrewer](https://github.com/axismaps/colorbrewer)
++ [axismaps/colorbrewer](https://github.com/axismaps/colorbrewer) - Cynthia Brewers Color Theory
 + [simogeo/geostats](https://github.com/simogeo/geostats)
 
 For more information about Jenk's Natural Breaks and a helpful python port of the algorithm, visit [Daniel J Lewis's Blog](http://danieljlewis.org/2010/06/07/jenks-natural-breaks-algorithm-in-python/).
@@ -33,10 +33,10 @@ brew.classify(); // returns [7.17,14.9,19.3,22.71,26.9,31.26]
 ```javascript
 var breaks = brew.getBreaks(); // returns [7.17,14.9,19.3,22.71,26.9,31.26]
 var colors = brew.getColors(); // returns [rgb(237,248,251),rgb(178,226,226),rgb(102,194,164),rgb(44,162,95),rgb(0,109,44)]
-brew.getColorInRange(7.5); //returns rgb(237,248,251)
+brew.getColorInRange(7.5); // returns rgb(237,248,251)
 ```
 
-***All classybrew Methods***
+**All classybrew Methods**
 
 ```javascript
 //constructor
@@ -68,3 +68,22 @@ brew.getColorCode(); // returns set color code
 brew.getColors(); // returns array of colors specific to your data
 brew.getColorInRange(Num); // returns appropriate color for given number
 ```
+
+*** Color Theory ***
+
+The colors generated using classybrew are based on [Cynthia Brewer's](http://colorbrewer2.org/) sequential color ramps.  Below are the possible codes you can use when generating your color ramp with your data.  ***BuGn -> Blue to Green***
+
+```javascript
+var brew = new classyBrew();
+brew.getColorCodes();  // returns
+/*
+["BuGn","BuPu","GnBu",
+ "OrRd","PuBu","PuBuGn",
+ "PuRd","RdPu","YlGn",
+ "YlGnBu","YlOrBr","YlOrRd", 
+ "Oranges", "Reds", "Greens",
+ "Purples", "Greys", "Blues"];
+*/
+```
+
+You can also view the simple test file to better understand how to use the library.
