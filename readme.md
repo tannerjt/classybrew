@@ -50,7 +50,7 @@ brew.setSeries(Array); // define array of data to classify
 brew.setNumClasses(Number); // number of classes or breaks
 
 // color theory
-brew.setColorCode(ColorCodeString); // color ramp code
+brew.setColorCode(ColorCodeString); // color ramp code... see below
 
 //_____getters______//
 //__________________//
@@ -71,7 +71,7 @@ brew.getColorInRange(Num); // returns appropriate color for given number
 
 ***Color Theory***
 
-The colors generated using classybrew are based on [Cynthia Brewer's](http://colorbrewer2.org/) sequential color ramps.  Below are the possible codes you can use when generating your color ramp with your data.  ***BuGn -> Blue to Green***
+The colors generated using classybrew are based on [Cynthia Brewer's](http://colorbrewer2.org/) sequential color ramps.  Below are the possible codes you can use when generating your color ramp with your data.  *BuGn -> Blue to Green*
 
 ```javascript
 var brew = new classyBrew();
