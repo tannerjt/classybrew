@@ -3,7 +3,10 @@
 	<title>Testing classybrew</title>
 </head>
 <body>
-
+<h1>CLASSYBREW</h1>
+<h2>Natural Breaks (Jenks) Data Classification</h2>
+<h2>With ColorBrewer</h2>
+<hr>
 <script src="../src/classybrew.js"></script>
 <script>
 	// create
@@ -43,7 +46,7 @@
 	var colorCodes = cb.getColorCodes();
 	for(var c = 0; c < colorCodes.length; c++) {
 		cb.setColorCode(colorCodes[c]);
-		document.write("<b>Color Code set to</b>" + cb.getColorCode());
+		document.write("<b>Color Code set to</b> " + cb.getColorCode());
 		document.write("<ul>");
 		for(var i = 0; i < series.length; i++) {
 			document.write("<li style='color:" + cb.getColorInRange(series[i]) + "'>");
