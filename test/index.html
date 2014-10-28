@@ -6,11 +6,53 @@
 
 <script src="../src/classybrew.js"></script>
 <script>
+	// create
 	var cb = new classyBrew();
-	cb.setSeries([1, 1, 2, 3, 4, 5, 6, 6, 40, 41, 60]);
-	cb.setNumClasses(4);
+	// series
+	var series = [30.01, 14.9, 22.71, 24.96, 7.17, 22.31, 26.23, 24.62, 24.35, 29.37, 28.55, 20.05, 22.06, 19.04, 21.95, 28.13, 21.28, 25.42, 19.16, 28.52, 29.63, 21.37, 16.69, 30.05, 25.81, 21.26, 23.48, 25.07, 31.26, 26.9, 24.04, 16.46, 27.47, 19.3, 20.51, 21.43]
+	cb.setSeries(series);
+	document.write("<b>Initial Series</b>");
+	document.write("<p>[" + series + "]</p>");
+
+	// number of classes
+	cb.setNumClasses(5);
+	document.write("<b>Set and Get Number of Classes</b>");
+	document.write( "<p>" + cb.getNumClasses() + "</p>");
+
+	// classify
 	var breaks = cb.classify();
-	console.log(breaks);
+	document.write("<b>Classify</b>");
+	document.write("<p>[" + cb.getBreaks() + "]</p>");
+
+	// get available color codes
+	document.write("<b>Optional Color Codes</b>");
+	document.write("<p>[" + cb.getColorCodes() + "]</p>");
+
+	// color codes
+	cb.setColorCode("BuGn");
+	document.write("<b>Set Color Code:</b>");
+	document.write("<p>" + cb.getColorCode() + "</p>");
+
+	// get colors based on data
+	document.write("<b>Get Colors From Defined Classes and Data:</b>");
+	document.write("<p>" + cb.getColors() + "</p>");
+
+	// get color code for a given number
+	document.write("<b>Get Colors For a specific number:</b>");
+	var series = cb.getSeries();
+	var colorCodes = cb.getColorCodes();
+	for(var c = 0; c < colorCodes.length; c++) {
+		cb.setColorCode(colorCodes[c]);
+		document.write("<b>Color Code set to</b>" + cb.getColorCode());
+		document.write("<ul>");
+		for(var i = 0; i < series.length; i++) {
+			document.write("<li style='color:" + cb.getColorInRange(series[i]) + "'>");
+			document.write(series[i] + " has color: " + cb.getColorInRange(series[i]));
+			document.write("</li>");
+		}
+		document.write("</ul>");
+	}
+
 </script>
 </body>
 </html>
