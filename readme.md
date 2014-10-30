@@ -2,6 +2,8 @@
 
 **classybrew** uses the Jenks Natural Breaks Algorithm to generate classes based on intrinsic breaks in your data.  **classybrew** will also generate a range of **sequential** color codes based on the number of breaks in your data and a user defined palette.  The minified JavaScript file is only 18kb in size, and will integrate perfectly with your next **mapping** project.
 
+[View Blog Post](http://tannerjt.github.io/geotanner/javascript/color-theory/2014/10/29/classybrew-jenks-heart-colorbrewer.html)
+
 This tool was built with help from two outstanding open source repositories.
 
 + [axismaps/colorbrewer](https://github.com/axismaps/colorbrewer) - Cynthia Brewers Color Theory
