@@ -60,7 +60,6 @@ brew.setColorCode(ColorCodeString); // color ramp code... see below
 // classification
 brew.getSeries(); // returns Array of original data
 brew.getNumClasses(); // returns set number of classes
-brew.
 brew.classify(); // build array of natural breaks
 brew.getBreaks(); // same as classify
 
