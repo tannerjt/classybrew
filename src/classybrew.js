@@ -1,5 +1,13 @@
 // Author : Joshua Tanner
 // Date : 10-26-2014
+// todo:
+// 1. Add all color schemes
+// 2. Include additional statistical breaks methods
+// 3. Make compatible with node require
+// 4. Add support for geojson
+// 5. Add tests 
+// 6. Update documentation
+// 7. Provide better examples
 
 var classyBrew;
 
