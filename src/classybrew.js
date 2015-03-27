@@ -3,7 +3,7 @@
 // todo:
 // 1. Add all color schemes
 // 2. Include additional statistical breaks methods
-// 3. Make compatible with node
+// 3. Make compatible with node -test
 // 4. Add support for geojson
 // 5. Add tests 
 // 6. Update documentation
@@ -96,7 +96,6 @@
 
 			// get color codes
 			this.getColorCodes = function () {
-				// return this.colorCodes;
 				var colorCodes = [];
 				for ( code in this.colorSchemes ) {
 					if ( this.colorSchemes.hasOwnProperty(code) ) {
@@ -104,12 +103,25 @@
 					}
 				}
 				return colorCodes;
+			};
 
+			// get color codes by type
+			this.getColorCodesByType = function () {
+				var colorTypes = {};
+				for ( code in this.colorSchemes ) {
+					if ( this.colorSchemes.hasOwnProperty(code) ) {
+						if( !colorTypes.hasOwnProperty(this.colorSchemes[code].properties.type) ) {
+							colorTypes[this.colorSchemes[code].properties.type] = []
+						}
+						colorTypes[this.colorSchemes[code].properties.type].push(code);
+					}
+				}
+				return colorTypes;
 			};
 
 			// return array of natural breaks
 			this.classify = function () {
-				var mat1 = []
+				var mat1 = [];
 				for ( var x = 0, xl = this.series.length + 1; x < xl; x++) {
 					var temp = []
 					for ( var j = 0, jl = this.numClasses + 1; j < jl; j++) {
@@ -205,7 +217,7 @@
 			this.getColorInRange = function (num) {
 				// return color code for supplied number
 				// [4, 6, 8, 9]
-				// [4-5.99, 5-7.99, 8-9.99, 9+]
+				// [4-5.99, 6-7.99, 8-9]
 				var i = 0;
 				for(i; i < this.range.length; i++) {
 					if(num >= this.range[i] && this.range[i + 1]) {
