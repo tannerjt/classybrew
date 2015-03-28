@@ -1,6 +1,6 @@
 {
   "name": "classybrew",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "repository" : "node_modules",
   "description": "Create class breaks and apply colorbrewer palette to output.",
   "devDependencies" : {
