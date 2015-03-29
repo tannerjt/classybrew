@@ -1,7 +1,7 @@
 // Author : Joshua Tanner
 // Date : 10-26-2014
 // todo:
-// 1. Add all color schemes
+// 1. Add all color schemes - Done
 // 2. Include additional statistical breaks methods
 // 3. Make compatible with node -test
 // 4. Add support for geojson
@@ -9,6 +9,7 @@
 // 6. Update documentation
 // 7. Provide better examples
 // 8. Setup Travis-CI
+// 9. Add grunt tasks (linting)
 
 (function () {
 
@@ -20,6 +21,7 @@
 			this.breaks = undefined;
 			this.colorCode = undefined;
 			this.range = undefined;
+			this.statMethod = undefined;
 
 			this.colorSchemes = {
 				/** Sequential **/
@@ -119,8 +121,39 @@
 				return colorTypes;
 			};
 
-			// return array of natural breaks
-			this.classify = function () {
+			/**** Classification Methods ****/
+
+			this._classifyEqualInterval = function () {
+				var min = Math.min.apply(null, this.series);
+				var max = Math.max.apply(null, this.series);
+				
+			    var a = [];
+			    var val = min;
+			    var interval = (max - min) / this.getNumClasses();
+
+			    for (i = 0; i <= this.getNumClasses(); i++) {
+			        a[i] = val;
+			        val += interval;
+			    }
+
+			    //-> Fix last bound to Max of values
+			    a[this.getNumClasses()] = max;
+
+			    this.range = a;
+			    this.range.sort(function (a, b) { return a-b })
+
+			    return this.range;
+			};
+
+			this._classifyQuantile = function () {
+
+			};
+
+			this._classifyStdDeviation = function () {
+
+			};
+
+			this._classifyJenks = function () {
 				var mat1 = [];
 				for ( var x = 0, xl = this.series.length + 1; x < xl; x++) {
 					var temp = []
@@ -200,6 +233,32 @@
 				this.range.sort(function (a, b) { return a-b })
 				
 				return this.range; //array of breaks
+			};
+
+			/**** End classification methods ****/
+
+			// return array of natural breaks
+			this.classify = function (method, classes) {
+				this.statMethod = (method !== undefined) ? method : this.statMethod;
+				this.numClasses = (classes !== undefined) ? classes : this.numClasses;
+				var breaks = undefined;
+				switch(method) {
+					case 'equal_interval':
+						breaks = this._classifyEqualInterval();
+						break;
+					case 'quantile':
+						breaks = this._classifyQuantile();
+						break;
+					case 'std_deviation':
+						breaks = this._classifyStdDeviation();
+						break;
+					case 'jenks':
+						breaks = this._classifyJenks();
+						break;
+					default:
+						breaks = this._classifyJenks();
+				}
+				return breaks;
 			};
 
 			this.getBreaks = function () {
