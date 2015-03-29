@@ -337,6 +337,11 @@
 				return breaks;
 			};
 
+			// return types of available classification methods 
+			this.getClassificationMethods = function () {
+				return ['equal_interval', 'quantile', 'std_deviation', 'jenks'];
+			};
+
 			this.getBreaks = function () {
 				// always re-classify to account for new data
 				return this.classify();
