@@ -4,7 +4,7 @@
 // 1. Add all color schemes - Done
 // 2. Include additional statistical breaks methods - Done
 // 3. Make compatible with node -Done
-// 4. Add support for geojson
+// 4. Add support for geojson - WAIT
 // 5. Add tests 
 // 6. Update documentation
 // 7. Provide better examples
