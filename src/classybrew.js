@@ -140,13 +140,29 @@
 			    a[this.getNumClasses()] = max;
 
 			    this.range = a;
-			    this.range.sort(function (a, b) { return a-b })
+			    this.range.sort(function (a, b) { return a-b });
 
 			    return this.range;
 			};
 
 			this._classifyQuantile = function () {
+				var tmp = this.series.sort(function (a, b) { return a-b });
+				var quantiles = [];
+				var step = this.series.length / this.getNumClasses();
+				for (var i = 1; i < this.getNumClasses(); i++) {
+					var qidx = Math.round(i*step+0.49);
+					quantiles.push(tmp[qidx-1]); // zero-based
+				}
+				var bounds = quantiles;
 
+				bounds.unshift(tmp[0]);
+				if (bounds[tmp.length - 1] !== tmp[tmp.length - 1])
+					bounds.push(tmp[tmp.length - 1]);
+
+				this.range = bounds;
+				this.range.sort(function (a, b) { return a-b });
+
+				return this.range;
 			};
 
 			this._classifyStdDeviation = function () {

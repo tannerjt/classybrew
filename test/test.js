@@ -8,7 +8,7 @@ test('INSTANTIATION', function (t) {
 });
 
 test('TEST STATISTICAL METHODS', function (t) {
-	t.plan(2);
+	t.plan(3);
 
 	//array
 	var brew = new classyBrew();
@@ -17,4 +17,6 @@ test('TEST STATISTICAL METHODS', function (t) {
 	t.equal(Array.isArray(breaks), true, 'Equal interval returns array');
 	var breaks = brew.classify('jenks', 3);
 	t.equal(Array.isArray(breaks), true, 'Jenks returns array');
+	var breaks = brew.classify('quantile', 3);
+	t.equal(Array.isArray(breaks), true, 'Quantile returns array');
 });
