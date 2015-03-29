@@ -2,8 +2,8 @@
 // Date : 10-26-2014
 // todo:
 // 1. Add all color schemes - Done
-// 2. Include additional statistical breaks methods
-// 3. Make compatible with node -test
+// 2. Include additional statistical breaks methods - Done
+// 3. Make compatible with node -Done
 // 4. Add support for geojson
 // 5. Add tests 
 // 6. Update documentation
@@ -166,7 +166,67 @@
 			};
 
 			this._classifyStdDeviation = function () {
+			    var min = Math.min.apply(null, this.series);
+				var max = Math.max.apply(null, this.series);
+			    
+			    var a = [];
+			    
+			    // number of classes is odd
+			    if(this.getNumClasses % 2 == 1) {
 
+			    	// Euclidean division to get the inferior bound
+			    	var infBound = Math.floor(this.getNumClasses() / 2);
+			    	
+			    	var supBound = infBound + 1;
+			    	
+			    	// we set the central bounds
+			    	a[infBound] = this._mean(this.series) - ( this._stdDev(this.series) / 2);
+			    	a[supBound] = this._mean(this.series) + ( this._stdDev(this.series) / 2);
+			    	
+			    	// Values < to infBound, except first one
+			    	for (i = infBound - 1; i > 0; i--) {
+			    		var val = a[i+1] - this._stdDev(this.series);
+				        a[i] = val;
+				    }
+			    	
+			    	// Values > to supBound, except last one
+			    	for (i = supBound + 1; i < this.getNumClasses(); i++) {
+			    		var val = a[i-1] + this._stdDev(this.series);
+				        a[i] = val;
+				    }
+			    	
+			    	// number of classes is even
+			    } else {
+			    	
+			    	var meanBound = this.getNumClasses() / 2;
+			    	
+			    	// we get the mean value
+			    	a[meanBound] = this._mean(this.series);
+			    	
+			    	// Values < to the mean, except first one
+			    	for (i = meanBound - 1; i > 0; i--) {
+			    		var val = a[i+1] - this._stdDev(this.series);
+				        a[i] = val;
+				    }
+			    	
+			    	// Values > to the mean, except last one
+			    	for (i = meanBound + 1; i < this.getNumClasses(); i++) {
+			    		var val = a[i-1] + this._stdDev(this.series);
+				        a[i] = val;
+				    }
+			    }
+			    
+			    
+			    // we finally set the first value
+		    	a[0] = min;
+		    	
+		    	// we finally set the last value
+		    	a[this.getNumClasses()] = max;
+
+			    this.range = a;
+			    this.range.sort(function (a, b) { return a-b });
+			    
+			    return this.range;
 			};
 
 			this._classifyJenks = function () {
@@ -241,7 +301,7 @@
 					countNum -= 1
 				}
 
-				if (kclass[0] == kclass[1]) {
+	 			if (kclass[0] == kclass[1]) {
 					kclass[0] = 0
 				}
 				
@@ -306,6 +366,35 @@
 					}
 				} 
 			};
+
+			/*** Simple Math Functions ***/
+			this._mean = function (arr) {
+				return parseFloat(this._sum(arr) / arr.length);
+			};
+
+			this._sum = function (arr) {
+				var sum = 0;
+				var i;
+				for(i = 0; i < arr.length; i++) {
+					sum += arr[i];
+				}
+				return sum;
+			};
+
+			this._variance = function (arr) {
+				var tmp = 0;
+				for (var i = 0; i < arr.length; i++) {
+					tmp += Math.pow( (arr[i] - this._mean(arr)), 2 );
+				}
+
+				return (tmp / arr.length);
+			};
+
+			this._stdDev = function (arr) {
+				return Math.sqrt(this._variance(arr));
+			};
+
+			/*** END Simple math Functions ***/
 		}
 
 
