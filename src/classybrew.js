@@ -10,6 +10,8 @@
 // 7. Provide better examples
 // 8. Setup Travis-CI
 // 9. Add grunt tasks (linting)
+// 10. Add .gitignore
+// 11. Add an actual todo doofus
 
 (function () {
 
