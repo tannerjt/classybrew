@@ -6,3 +6,4 @@
 4. Provide better examples
 5. Setup Travis-CI
 6. Add grunt tasks (linting)
+7. Add new repo with examples
