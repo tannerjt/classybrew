@@ -92,6 +92,8 @@
 	document.write("<b>Get Colors For a specific number:</b>");
 	var series = cb.getSeries();
 	var colorCodes = cb.getColorCodes();
+
+	// create table
 	for(var c = 0; c < colorCodes.length; c++) {
 		cb.setColorCode(colorCodes[c]);
 		document.write("<b>Color Code set to</b> " + cb.getColorCode());
