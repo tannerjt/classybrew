@@ -98,25 +98,22 @@
 	var data = cb.getSeries();
 	for( var c = 0; c < colors.length; c++ ) {
 		jenks.setColorCode(colors[c]);
-		document.write("<b>" + colors[c] + "</b>");
-	}
-
-	// get color code for a given number
-	document.write("<b>Get Colors For a specific number:</b>");
-	var series = cb.getSeries();
-	var colorCodes = cb.getColorCodes();
-
-	// create table
-	for(var c = 0; c < colorCodes.length; c++) {
-		cb.setColorCode(colorCodes[c]);
-		document.write("<b>Color Code set to</b> " + cb.getColorCode());
-		document.write("<ul>");
-		for(var i = 0; i < series.length; i++) {
-			document.write("<li style='color:" + cb.getColorInRange(series[i]) + "'>");
-			document.write(series[i] + " has color: " + cb.getColorInRange(series[i]));
-			document.write("</li>");
+		quantile.setColorCode(colors[c]);
+		equal_interval.setColorCode(colors[c]);
+		document.write("<br><b>Color code set to " + colors[c] + "</b>");
+		document.write("<table>");
+		document.write("<tr><th>Jenks</th>");
+		document.write("<th>Quantile</th>");
+		document.write("<th>Equal Inerval</th>");
+		document.write("</tr>");
+		for (var i = 0; i < series.length; i++) {
+			document.write("<tr>");
+			document.write("<td style='background-color:" + jenks.getColorInRange(series[i]) + "'></td>");
+			document.write("<td style='background-color:" + quantile.getColorInRange(series[i]) + "'></td>");
+			document.write("<td style='background-color:" + equal_interval.getColorInRange(series[i]) + "'></td>");
+			document.write("</tr>");
 		}
-		document.write("</ul>");
+		document.write("</table>");
 	}
 
 </script>
