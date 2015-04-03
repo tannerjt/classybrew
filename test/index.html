@@ -1,6 +1,17 @@
 <html>
 <head>
 	<title>Testing classybrew</title>
+	<style>
+		code {
+			background-color : #000000;
+			color : #ffffff;
+			padding : 2px;
+		}
+		p {
+			color : #7491A3;
+			font-style : italic;
+		}
+	</style>
 </head>
 <body>
 <h1>CLASSYBREW</h1>
@@ -61,11 +72,13 @@
 
 	// color codes
 	cb.setColorCode("BuGn");
-	document.write("<b>Set Color Code:</b>");
+	document.write("<b>Set Color Code:</b><br>");
+	document.write("<code>cb.setColorCode('BuGn')</code>");
 	document.write("<p>" + cb.getColorCode() + "</p>");
 
 	// get colors based on data
-	document.write("<b>Get Colors From Defined Classes and Data:</b>");
+	document.write("<b>Get Colors From Defined Classes and Data:</b><br>");
+	document.write("<code>cb.getColors()</code>")
 	document.write("<p>" + cb.getColors() + "</p>");
 
 	// create new classybrew objects for table
