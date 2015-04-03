@@ -1,15 +1,6 @@
 ##classybrew
 
-**classybrew** uses the Jenks Natural Breaks Algorithm to generate classes based on intrinsic breaks in your data.  **classybrew** will also generate a range of **sequential** color codes based on the number of breaks in your data and a user defined palette.  The minified JavaScript file is only 18kb in size, and will integrate perfectly with your next **mapping** project.
-
-[View Blog Post](http://tannerjt.github.io/geotanner/javascript/color-theory/2014/10/29/classybrew-jenks-heart-colorbrewer.html)
-
-This tool was built with help from two outstanding open source repositories.
-
-+ [axismaps/colorbrewer](https://github.com/axismaps/colorbrewer) - Cynthia Brewers Color Theory
-+ [simogeo/geostats](https://github.com/simogeo/geostats)
-
-For more information about Jenk's Natural Breaks and a helpful python port of the algorithm, visit [Daniel J Lewis's Blog](http://danieljlewis.org/2010/06/07/jenks-natural-breaks-algorithm-in-python/).
+**classybrew** lets you choose from several statistical algorithms (Jenks Natural Breaks, Quantile, Equal Interval) to generate class breaks based on your data.  **classybrew** has [colorbrewer](https://github.com/axismaps/colorbrewer) color palettes built in to quickly generate choropleth maps, graphics, tables, etc. with ease.
 
 ###Using classybrew
 
@@ -24,10 +15,8 @@ brew.setColorCode("BuGn");
 
 **Basics - Classify**
 
-You can use classify or getBreaks
-
 ```javascript
-brew.classify(); // returns [7.17,14.9,19.3,22.71,26.9,31.26]
+brew.classify('jenks'); // returns [7.17,14.9,19.3,22.71,26.9,31.26]
 ```
 
 **Basics - Retrieval**
@@ -60,11 +49,12 @@ brew.setColorCode(ColorCodeString); // color ramp code... see below
 // classification
 brew.getSeries(); // returns Array of original data
 brew.getNumClasses(); // returns set number of classes
-brew.classify(); // build array of natural breaks
-brew.getBreaks(); // same as classify
+brew.classify(Method:optional, Classes:optional); // returns classified data. Defaults to natural breaks methods
+brew.getBreaks(); // will call classify but for performance returns pointer if classify has already been called
 
 //color theory
 brew.getColorCodes(); // returns array of all available color codes
+brew.getColorCodesByType; // returns object of color codes by type (diverging, sequential, qualitative)
 brew.getColorCode(); // returns set color code
 brew.getColors(); // returns array of colors specific to your data
 brew.getColorInRange(Num); // returns appropriate color for given number
@@ -78,13 +68,13 @@ The colors generated using classybrew are based on [Cynthia Brewer's](http://col
 var brew = new classyBrew();
 brew.getColorCodes();  // returns
 /*
-["BuGn","BuPu","GnBu",
- "OrRd","PuBu","PuBuGn",
- "PuRd","RdPu","YlGn",
- "YlGnBu","YlOrBr","YlOrRd", 
- "Oranges", "Reds", "Greens",
- "Purples", "Greys", "Blues"];
+["OrRd", "PuBu", "BuPu", "Oranges", "BuGn", "YlOrBr", "YlGn", "Reds", "RdPu", "Greens", "YlGnBu", "Purples", "GnBu", "Greys", "YlOrRd", "PuRd", "Blues", "PuBuGn", "Spectral", "RdYlGn", "RdBu", "PiYG", "PRGn", "RdYlBu", "BrBG", "RdGy", "PuOr", "Set2", "Accent", "Set1", "Set3", "Dark2", "Paired", "Pastel2", "Pastel1"];
 */
 ```
 
-You can also view the simple test file to better understand how to use the library.
+You can also view the simple test file (./test/index.html) to better understand how to use the library and visualize the color palettes.
+
+This tool was built with inspiration from two outstanding open source repositories.
+
++ [axismaps/colorbrewer](https://github.com/axismaps/colorbrewer) - Cynthia Brewers Color Theory
++ [simogeo/geostats](https://github.com/simogeo/geostats)
