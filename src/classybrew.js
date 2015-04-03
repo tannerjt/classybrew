@@ -321,6 +321,7 @@
 					default:
 						breaks = this._classifyJenks();
 				}
+				this.breaks = breaks;
 				return breaks;
 			};
 
@@ -331,7 +332,7 @@
 
 			this.getBreaks = function () {
 				// always re-classify to account for new data
-				return this.classify();
+				return this.breaks ? this.breaks : this.classify();
 			};
 
 			// get colors from data and num classes
