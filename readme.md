@@ -39,6 +39,8 @@ var brew = new classyBrew();
 // classification
 brew.setSeries(Array); // define array of data to classify
 brew.setNumClasses(Number); // number of classes or breaks
+//@Methods: equal_interval, quantile, jenks
+brew.classify(Method:optional, Classes:optional); // returns classified data. Defaults to natural breaks methods
 
 // color theory
 brew.setColorCode(ColorCodeString); // color ramp code... see below
@@ -49,8 +51,8 @@ brew.setColorCode(ColorCodeString); // color ramp code... see below
 // classification
 brew.getSeries(); // returns Array of original data
 brew.getNumClasses(); // returns set number of classes
-brew.classify(Method:optional, Classes:optional); // returns classified data. Defaults to natural breaks methods
 brew.getBreaks(); // will call classify but for performance returns pointer if classify has already been called
+brew.getClassificationMethods // returns available classification methods to pass to classify()
 
 //color theory
 brew.getColorCodes(); // returns array of all available color codes
