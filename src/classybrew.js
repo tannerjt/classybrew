@@ -326,7 +326,7 @@
 
 			// return types of available classification methods 
 			this.getClassificationMethods = function () {
-				return ['equal_interval', 'quantile', 'std_deviation', 'jenks'];
+				return ['equal_interval', 'quantile'/*, 'std_deviation'*/, 'jenks'];
 			};
 
 			this.getBreaks = function () {
