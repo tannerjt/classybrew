@@ -54,11 +54,11 @@ brew.setColorCode(ColorCodeString); // color ramp code... see below
 brew.getSeries(); // returns Array of original data
 brew.getNumClasses(); // returns set number of classes
 brew.getBreaks(); // will call classify but for performance returns pointer if classify has already been called
-brew.getClassificationMethods() // returns available classification methods to pass to classify()
+brew.getClassificationMethods(); // returns available classification methods to pass to classify()
 
 //color theory
 brew.getColorCodes(); // returns array of all available color codes
-brew.getColorCodesByType; // returns object of color codes by type (diverging, sequential, qualitative)
+brew.getColorCodesByType(); // returns object of color codes by type (diverging, sequential, qualitative)
 brew.getColorCode(); // returns set color code
 brew.getColors(); // returns array of colors specific to your data
 brew.getColorInRange(Num); // returns appropriate color for given number
