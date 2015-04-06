@@ -2,6 +2,8 @@
 
 **classybrew** lets you choose from several statistical algorithms (Jenks Natural Breaks, Quantile, Equal Interval) to generate class breaks based on your data.  **classybrew** has [colorbrewer](https://github.com/axismaps/colorbrewer) color palettes built in to quickly generate choropleth maps, graphics, tables, etc. with ease.
 
+[Example Application Using classybrew](http://tannerjt.github.io/classybrew-www/examples/basic/)
+
 ###Using classybrew
 
 **Basics - Setup**
@@ -52,7 +54,7 @@ brew.setColorCode(ColorCodeString); // color ramp code... see below
 brew.getSeries(); // returns Array of original data
 brew.getNumClasses(); // returns set number of classes
 brew.getBreaks(); // will call classify but for performance returns pointer if classify has already been called
-brew.getClassificationMethods // returns available classification methods to pass to classify()
+brew.getClassificationMethods() // returns available classification methods to pass to classify()
 
 //color theory
 brew.getColorCodes(); // returns array of all available color codes
