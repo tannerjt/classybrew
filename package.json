@@ -1,12 +1,24 @@
 {
   "name": "classybrew",
   "version": "0.0.2",
-  "repository" : "node_modules",
+  "author": "tannerjt",
+  "main": "./src/classybrew.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository" : {
+    "type": "git",
+    "url": "https://github.com/tannerjt/classybrew"
+  },
+  "bugs": {
+    "url": "https://github.com/tannerjt/classybrew/issues"
+  },
+  "license": "MIT",
   "description": "Create class breaks and apply colorbrewer palette to output.",
-  "devDependencies" : {
-    "grunt" : "~0.4.5",
-    "grunt-contrib-uglify" : "~0.6.0",
-    "grunt-contrib-watch" : "~0.6.1",
-    "tape" : "^3.5.0"
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "grunt-contrib-uglify": "~0.6.0",
+    "grunt-contrib-watch": "~0.6.1",
+    "tape": "^3.5.0"
   }
 }
