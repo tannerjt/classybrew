@@ -1,17 +1,17 @@
 var test = require('tape');
-var classyBrew = require('../src/classyBrew');
+var classybrew = require('../src/classybrew');
 
 test('INSTANTIATION', function (t) {
 	t.plan(1);
 
-	t.equal( typeof(new classyBrew()) , 'object', 'Instaniation returns object');
+	t.equal( typeof(new classybrew()) , 'object', 'Instaniation returns object');
 });
 
 test('TEST STATISTICAL METHODS', function (t) {
 	t.plan(4);
 
 	//array
-	var brew = new classyBrew();
+	var brew = new classybrew();
 	brew.setSeries([2, 4, 6, 8]);
 
 	var breaks = brew.classify('equal_interval');
@@ -27,4 +27,3 @@ test('TEST STATISTICAL METHODS', function (t) {
 	t.equal(Array.isArray(breaks), true, 'Standard deviation returns array');
 
 });
-
