@@ -1,6 +1,6 @@
 {
   "name": "classybrew",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "Joshua Tanner <support@tannergeo.com> (http://tannergeo.com)",
   "keywords": ["colorbrewer", "color theory", "mapping"],
   "main": "./src/classybrew.js",
