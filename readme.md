@@ -1,4 +1,4 @@
-##classybrew
+## classybrew
 
 **classybrew** lets you choose from several statistical algorithms (Jenks Natural Breaks, Quantile, Equal Interval) to generate class breaks based on your data.  **classybrew** has [colorbrewer](https://github.com/axismaps/colorbrewer) color palettes built in to quickly generate choropleth maps, graphics, tables, etc. with ease.
 
@@ -6,7 +6,7 @@
 
 Created By: [tannergeo](http://tannergeo.com)
 
-###Using classybrew
+### Using classybrew
 
 **Basics - Setup**
 
